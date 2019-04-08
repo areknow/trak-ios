@@ -22,8 +22,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   let mileTypes = ["10,000", "12,000", "15,000"]
   
   
-  
-  /// Build the date picker and attach the toolbar with 'done' action
+  // Create the date picker and attach the toolbar with 'done' action
   func createDatePicker() {
     datePicker.datePickerMode = .date
     datePickerTF.inputView = datePicker
@@ -33,7 +32,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     toolBar.setItems([doneButton], animated: true)
     datePickerTF.inputAccessoryView = toolBar
   }
-  /// Close date picker and format the date for the date picker text field
+  
+  // Close date picker and format the date for the date picker text field
   @objc func closeDatePicker() {
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .medium
@@ -43,7 +43,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   }
   
   
-  
+  // Set up the miles picker with needed functions
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
@@ -58,6 +58,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     milePickerTF.text = selectedMiles
   }
   
+  // Create the mile picker and attach toolbar with 'done' action
   func createMilePicker() {
     milePicker.delegate = self
     milePickerTF.inputView = milePicker
@@ -68,12 +69,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     milePickerTF.inputAccessoryView = toolBar
   }
   
+  // Close the mile picker
   @objc func closeMilePicker() {
     self.view.endEditing(true)
   }
   
   
-  
+  // View did load init function
   override func viewDidLoad() {
     super.viewDidLoad()
     createDatePicker()
