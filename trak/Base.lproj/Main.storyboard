@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,61 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="trak" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zkE-e1-F4W">
+                                <rect key="frame" x="20" y="179" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yearly miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stw-b8-QxV">
+                                <rect key="frame" x="20" y="262" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnV-sE-MWK">
+                                <rect key="frame" x="20" y="291" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lease start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UP6-un-c6u">
+                                <rect key="frame" x="20" y="150" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="135" id="0yW-TW-9So"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="top" secondItem="stw-b8-QxV" secondAttribute="bottom" constant="8" id="5LI-I1-vgh"/>
+                            <constraint firstItem="stw-b8-QxV" firstAttribute="trailing" secondItem="gnV-sE-MWK" secondAttribute="trailing" id="CNl-52-hHm"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="247" id="IVr-23-RJt"/>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="top" secondItem="UP6-un-c6u" secondAttribute="bottom" constant="8" id="QOV-nz-a8J"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ggT-ev-Vh6"/>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="187:448" id="hd1-8R-1ul"/>
+                            <constraint firstItem="UP6-un-c6u" firstAttribute="leading" secondItem="zkE-e1-F4W" secondAttribute="leading" id="od7-3R-sgV"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="187:448" id="pBJ-zG-gGr"/>
+                            <constraint firstItem="stw-b8-QxV" firstAttribute="leading" secondItem="gnV-sE-MWK" secondAttribute="leading" id="rCN-7A-a7j"/>
+                            <constraint firstItem="UP6-un-c6u" firstAttribute="trailing" secondItem="zkE-e1-F4W" secondAttribute="trailing" id="raR-UV-JlB"/>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zZH-1u-rij"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="datePickerTF" destination="zkE-e1-F4W" id="wDK-GX-plz"/>
+                        <outlet property="milePickerTF" destination="gnV-sE-MWK" id="vwt-UN-cUe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>
