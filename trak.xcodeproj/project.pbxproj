@@ -281,7 +281,7 @@
 		BBFB0E33225B88B00091D432 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Trak icon";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VN892VAK63;
 				INFOPLIST_FILE = trak/Info.plist;
@@ -292,14 +292,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.areknow.trak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		BBFB0E34225B88B00091D432 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Trak icon";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VN892VAK63;
 				INFOPLIST_FILE = trak/Info.plist;
@@ -310,7 +310,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.areknow.trak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

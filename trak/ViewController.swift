@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   @IBOutlet var datePickerTF: UITextField!
   @IBOutlet var milePickerTF: UITextField!
   @IBOutlet var allowedMilesLB: UILabel!
+  @IBOutlet var totalTimeLB: UILabel!
   
   let datePicker = UIDatePicker()
   let milePicker = UIPickerView()
@@ -123,13 +124,18 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   // Compute mileage statistics and update CTA label
   func calculate() {
     let daysPassed = Calendar.current.dateComponents([.day], from: datePicker.date, to: Date()).day
+    let template = "%@ days"
+    totalTimeLB.text = String(format: template, String(daysPassed!))
     let miles = milePickerTF.text!.replacingOccurrences(of: ",", with: "")
     let allowedMiles = Double(daysPassed!) * (Double(miles)! / 365)
     var offset: Double! = 0
     if (Double(offsetTF.text!) != nil) {
       offset = Double(offsetTF.text!)
     }
-    let result = allowedMiles + offset
+    var result = allowedMiles + offset
+    if (result < 0) {
+      result = 0
+    }
     allowedMilesLB.text = String(format: "%.0f", result)
   }
   
@@ -149,4 +155,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     createOffsetInputToolbar()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.setNeedsStatusBarAppearanceUpdate()
+  }
+  
+  override var preferredStatusBarStyle : UIStatusBarStyle {
+    return .lightContent
+  }
 }
