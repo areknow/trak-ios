@@ -18,51 +18,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zkE-e1-F4W">
-                                <rect key="frame" x="20" y="179" width="374" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odometer offset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk3-Vy-1Zi">
+                                <rect key="frame" x="20" y="170" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yearly miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stw-b8-QxV">
-                                <rect key="frame" x="20" y="262" width="374" height="21"/>
+                                <rect key="frame" x="20" y="382" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnV-sE-MWK">
-                                <rect key="frame" x="20" y="291" width="374" height="30"/>
+                                <rect key="frame" x="20" y="411" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="milesInputChange:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="79r-9h-t6r"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hRy-DH-YYc">
+                                <rect key="frame" x="20" y="199" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="offsetInputChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="73O-Pc-5hC"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zkE-e1-F4W">
+                                <rect key="frame" x="20" y="312" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="startInputChange:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="DkC-J5-adf"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lease start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UP6-un-c6u">
-                                <rect key="frame" x="20" y="150" width="374" height="21"/>
+                                <rect key="frame" x="20" y="283" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrT-tj-lKV">
+                                <rect key="frame" x="127" y="99" width="160" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zkE-e1-F4W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="135" id="0yW-TW-9So"/>
-                            <constraint firstItem="gnV-sE-MWK" firstAttribute="top" secondItem="stw-b8-QxV" secondAttribute="bottom" constant="8" id="5LI-I1-vgh"/>
-                            <constraint firstItem="stw-b8-QxV" firstAttribute="trailing" secondItem="gnV-sE-MWK" secondAttribute="trailing" id="CNl-52-hHm"/>
-                            <constraint firstItem="gnV-sE-MWK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="247" id="IVr-23-RJt"/>
-                            <constraint firstItem="zkE-e1-F4W" firstAttribute="top" secondItem="UP6-un-c6u" secondAttribute="bottom" constant="8" id="QOV-nz-a8J"/>
-                            <constraint firstItem="gnV-sE-MWK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ggT-ev-Vh6"/>
-                            <constraint firstItem="zkE-e1-F4W" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="187:448" id="hd1-8R-1ul"/>
-                            <constraint firstItem="UP6-un-c6u" firstAttribute="leading" secondItem="zkE-e1-F4W" secondAttribute="leading" id="od7-3R-sgV"/>
-                            <constraint firstItem="gnV-sE-MWK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="187:448" id="pBJ-zG-gGr"/>
-                            <constraint firstItem="stw-b8-QxV" firstAttribute="leading" secondItem="gnV-sE-MWK" secondAttribute="leading" id="rCN-7A-a7j"/>
-                            <constraint firstItem="UP6-un-c6u" firstAttribute="trailing" secondItem="zkE-e1-F4W" secondAttribute="trailing" id="raR-UV-JlB"/>
-                            <constraint firstItem="zkE-e1-F4W" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zZH-1u-rij"/>
+                            <constraint firstItem="hRy-DH-YYc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="187:448" id="Db2-GU-SxL"/>
+                            <constraint firstItem="hRy-DH-YYc" firstAttribute="top" secondItem="Uk3-Vy-1Zi" secondAttribute="bottom" constant="8" id="Ebc-cD-UOD"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="top" secondItem="stw-b8-QxV" secondAttribute="bottom" constant="8" id="H0Y-Hx-EWF"/>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="top" secondItem="UP6-un-c6u" secondAttribute="bottom" constant="8" id="HqE-Hg-n8s"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="I4X-HB-HoC"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="187:448" id="JFT-OX-rD2"/>
+                            <constraint firstItem="stw-b8-QxV" firstAttribute="leading" secondItem="gnV-sE-MWK" secondAttribute="leading" id="Llo-AM-DU1"/>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RCu-h9-2qy"/>
+                            <constraint firstItem="gnV-sE-MWK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="367" id="UfM-Sv-mUV"/>
+                            <constraint firstItem="hRy-DH-YYc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="155" id="YaL-P0-ZpY"/>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="187:448" id="c3h-lf-aAr"/>
+                            <constraint firstItem="zkE-e1-F4W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="268" id="dci-sw-70C"/>
+                            <constraint firstItem="UP6-un-c6u" firstAttribute="leading" secondItem="zkE-e1-F4W" secondAttribute="leading" id="e4o-mv-19R"/>
+                            <constraint firstItem="Uk3-Vy-1Zi" firstAttribute="leading" secondItem="hRy-DH-YYc" secondAttribute="leading" id="e78-So-G6k"/>
+                            <constraint firstItem="Uk3-Vy-1Zi" firstAttribute="trailing" secondItem="hRy-DH-YYc" secondAttribute="trailing" id="iIo-oO-T2v"/>
+                            <constraint firstItem="hRy-DH-YYc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lkF-C4-P5w"/>
+                            <constraint firstItem="UP6-un-c6u" firstAttribute="trailing" secondItem="zkE-e1-F4W" secondAttribute="trailing" id="mvj-2S-y7j"/>
+                            <constraint firstItem="stw-b8-QxV" firstAttribute="trailing" secondItem="gnV-sE-MWK" secondAttribute="trailing" id="ub8-hP-UEC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="allowedMilesLB" destination="lrT-tj-lKV" id="H7l-i2-dde"/>
                         <outlet property="datePickerTF" destination="zkE-e1-F4W" id="wDK-GX-plz"/>
                         <outlet property="milePickerTF" destination="gnV-sE-MWK" id="vwt-UN-cUe"/>
+                        <outlet property="offsetTF" destination="hRy-DH-YYc" id="PLt-Sc-byg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
