@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
   
   // Attach UI listeners
-  @IBAction func offsetInputChange(_ sender: UITextField) { calculate() }
-  @IBAction func startInputChange(_ sender: UITextField) { calculate() }
-  @IBAction func milesInputChange(_ sender: UITextField) { calculate() }
+  @IBAction func offsetInputChange(_ sender: UITextField) { calculate(); storeData() }
+  @IBAction func startInputChange(_ sender: UITextField) { calculate(); storeData() }
+  @IBAction func milesInputChange(_ sender: UITextField) { calculate(); storeData() }
 
   // Attach UI controls
   @IBOutlet var offsetTF: UITextField!
@@ -27,8 +27,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   
   var selectedMiles: String!
   let mileTypes = ["10,000", "12,000", "15,000"]
-  
-  
   
   
   
@@ -78,6 +76,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     selectedMiles = mileTypes[row]
     milePickerTF.text = selectedMiles
+    calculate()
   }
   
   // Create the mile picker and attach toolbar with 'done' action
@@ -90,8 +89,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(closeMilePicker))
     toolBar.setItems([doneButton], animated: true)
     milePickerTF.inputAccessoryView = toolBar
-    // Select first picker option
-    pickerView(milePicker, didSelectRow: 0, inComponent: 0)
   }
   
   // Close the mile picker
@@ -123,20 +120,67 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   
   // Compute mileage statistics and update CTA label
   func calculate() {
+    print("calc")
     let daysPassed = Calendar.current.dateComponents([.day], from: datePicker.date, to: Date()).day
-    let template = "%@ days"
-    totalTimeLB.text = String(format: template, String(daysPassed!))
     let miles = milePickerTF.text!.replacingOccurrences(of: ",", with: "")
     let allowedMiles = Double(daysPassed!) * (Double(miles)! / 365)
-    var offset: Double! = 0
-    if (Double(offsetTF.text!) != nil) {
-      offset = Double(offsetTF.text!)
+    var offset: Int! = 0
+    if (Int(offsetTF.text!) != nil) {
+      offset = Int(offsetTF.text!)
     }
-    var result = allowedMiles + offset
+    var result = Int(allowedMiles) + offset
     if (result < 0) {
       result = 0
     }
-    allowedMilesLB.text = String(format: "%.0f", result)
+    // Display days passed and miles in labels
+    let template = "%@ days"
+    totalTimeLB.text = String(format: template, String(daysPassed!))
+    allowedMilesLB.text = result.withCommas()
+    // Pass values to be stored
+    storeData()
+  }
+  
+  // Store data to NS Defaults
+  func storeData() {
+    UserDefaults.standard.set(offsetTF.text, forKey: "offset")
+    UserDefaults.standard.set(milePickerTF.text, forKey: "miles")
+    UserDefaults.standard.set(datePickerTF.text, forKey: "start")
+  }
+  
+  // Get data from NS Defaults
+  func retreiveData() {
+    // Offset
+    let offset = UserDefaults.standard.string(forKey: "offset")
+    offsetTF.text = offset
+    // Start
+    let start = UserDefaults.standard.string(forKey: "start")
+    datePickerTF.text = start
+    if (start != "" && start != nil) {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat =  "MMM dd,yyyy"
+      let date = dateFormatter.date(from: start!)
+      datePicker.date = date!
+    } else {
+      datePicker.setDate(Date(), animated: false)
+      datePickerTF.text = formatDate(Date())
+    }
+    // Miles
+    var miles = UserDefaults.standard.string(forKey: "miles")
+    if miles == nil {
+      miles = "10,000"
+    }
+    var milePickerRow = 0;
+    switch miles {
+    case "12,000":
+      milePickerRow = 1
+    case "15,000":
+      milePickerRow = 2
+    default:
+      milePickerRow = 0
+    }
+    pickerView(milePicker, didSelectRow: milePickerRow, inComponent: 0)
+    milePicker.selectRow(milePickerRow, inComponent: 0, animated: true)
+    milePickerTF.text = miles
   }
   
   // Return a formatted date, i.e. 'Apr 8, 2019'
@@ -153,6 +197,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     createDatePicker()
     createMilePicker()
     createOffsetInputToolbar()
+    retreiveData()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -160,7 +205,25 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     self.setNeedsStatusBarAppearanceUpdate()
   }
   
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+  }
+  
   override var preferredStatusBarStyle : UIStatusBarStyle {
     return .lightContent
+  }
+}
+
+
+
+
+
+
+
+extension Int {
+  func withCommas() -> String {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = NumberFormatter.Style.decimal
+    return numberFormatter.string(from: NSNumber(value:self))!
   }
 }
